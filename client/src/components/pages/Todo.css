@@ -1,0 +1,13 @@
+.Todo-background {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    background-image: url('https://wallpapercave.com/wp/wp12821131.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.createButton {
+    text-align: center;
+}

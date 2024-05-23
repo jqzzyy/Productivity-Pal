@@ -1,1 +1,26 @@
-/* Fill me in :) */
+.homeScreen {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+  }
+  
+  .backgroundContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://wallpapercave.com/wp/wp12821131.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+  
+  .NavBar, .Home {
+    position: relative;
+    z-index: 2;
+  }
+  
+.aboutSection {
+    text-align: center;
+    padding-inline: 10%;
+    padding-bottom: 10px;
+}

@@ -5,6 +5,9 @@ import jwt_decode from "jwt-decode";
 
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
+import Todo from "./pages/Todo.js";
+import Calendar from "./pages/Calendar.js"
+
 
 import "../utilities.css";
 
@@ -47,14 +50,35 @@ const App = () => {
       <Route
         path="/"
         element={
-          <Skeleton
+          <div className="h"><Skeleton
             path="/"
             handleLogin={handleLogin}
             handleLogout={handleLogout}
             userId={userId}
           />
+          </div>
         }
       />
+      <Route
+        path="/Todo"
+        element={
+          <Todo
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+          userId={userId}
+          />
+        }
+      />
+      <Route
+        path="/Calendar"
+        element={
+          <Calendar
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+          userId={userId}
+          />
+        }
+        />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
