@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
+import Frontpage from "./pages/Frontpage.js";
 import Todo from "./pages/Todo.js";
 import Calendar from "./pages/Calendar.js";
 import "../utilities.css";
@@ -52,7 +52,7 @@ const App = () => {
         path="/"
         element={
           <div className="h">
-            <Skeleton
+            <Frontpage
               path="/"
               handleLogin={handleLogin}
               handleLogout={handleLogout}
@@ -74,7 +74,7 @@ const App = () => {
       <Route
         path="/Calendar"
         element={
-          <Calendar
+          <Frontpage
             handleLogin={handleLogin}
             handleLogout={handleLogout}
             userId={userId}

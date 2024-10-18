@@ -3,7 +3,7 @@ import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/goo
 import { Link } from "react-router-dom";
 
 import "../../utilities.css";
-import "./Skeleton.css";
+import "./Frontpage.css";
 import NavBar from "../modules/NavBar";
 import Home from "../modules/Home";
 import Timer from "../modules/Timer";
