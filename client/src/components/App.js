@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
-
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Todo from "./pages/Todo.js";
-import Calendar from "./pages/Calendar.js"
-
-
+import Calendar from "./pages/Calendar.js";
 import "../utilities.css";
-
 import { socket } from "../client-socket.js";
-
 import { get, post } from "../utilities";
 
-/**
- * Define the "App" component
- */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
-        // they are registed in the database, and currently logged in.
         setUserId(user._id);
+        setUser(user); // Save the user details
       }
     });
   }, []);
@@ -34,15 +26,24 @@ const App = () => {
     const userToken = credentialResponse.credential;
     const decodedCredential = jwt_decode(userToken);
     console.log(`Logged in as ${decodedCredential.name}`);
-    post("/api/login", { token: userToken }).then((user) => {
-      setUserId(user._id);
-      post("/api/initsocket", { socketid: socket.id });
-    });
+
+    post("/api/login", { token: userToken })
+      .then((user) => {
+        setUserId(user._id);
+        setUser(user); // Save the user details
+        return post("/api/initsocket", { socketid: socket.id });
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+      });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
-    post("/api/logout");
+    setUser({}); // Clear the user details
+    post("/api/logout").catch((err) => {
+      console.error("Logout failed:", err);
+    });
   };
 
   return (
@@ -50,12 +51,13 @@ const App = () => {
       <Route
         path="/"
         element={
-          <div className="h"><Skeleton
-            path="/"
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-            userId={userId}
-          />
+          <div className="h">
+            <Skeleton
+              path="/"
+              handleLogin={handleLogin}
+              handleLogout={handleLogout}
+              userId={userId}
+            />
           </div>
         }
       />
@@ -63,9 +65,9 @@ const App = () => {
         path="/Todo"
         element={
           <Todo
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
-          userId={userId}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+            userId={userId}
           />
         }
       />
@@ -73,12 +75,13 @@ const App = () => {
         path="/Calendar"
         element={
           <Calendar
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
-          userId={userId}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+            userId={userId}
+            user={user} // Pass user details as props
           />
         }
-        />
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

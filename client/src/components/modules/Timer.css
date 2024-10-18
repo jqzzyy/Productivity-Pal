@@ -39,5 +39,12 @@
     width: fit-content;
     word-break: break-word;
     border: 0;
+
+
   }
-  
+
+  .button:hover {
+    opacity: 0.8;
+    background: #4a7ad3;
+  }
+ 

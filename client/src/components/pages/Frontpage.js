@@ -7,8 +7,7 @@ import "./Skeleton.css";
 import NavBar from "../modules/NavBar";
 import Home from "../modules/Home";
 import Timer from "../modules/Timer";
-//TODO: REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "406131015562-o2ju70gmh1or2ssjj2eu156jifctnqh7.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   return (
@@ -24,28 +23,12 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
           Instead of going through the hassle, Productivity Pal is an all-in-one service 
           that provides all the resources you need to stay productive! </h3> 
         </div>
-
+      
     </div>
     
 
-    
-    // <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-    //   {userId ? (
-    //     <button
-    //       onClick={() => {
-    //         googleLogout();
-    //         handleLogout();
-    //       }}
-    //     >
-    //       Logout
-    //     </button>
-    //   ) : (
-    //     <GoogleLogin onSuccess={handleLogin} onError={(err) => console.log(err)} />
-    //   )}
-      
 
-    // </GoogleOAuthProvider>
   );
 };
 
-export default Skeleton;
+export default Frontpage;

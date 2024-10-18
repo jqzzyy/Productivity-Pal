@@ -4,6 +4,7 @@ import "../../utilities.css";
 import "./NavBar.css";
 
 const NavBar = (props) => {
+    
     return (
         <>
         <div className="NavBar-container">
@@ -17,7 +18,7 @@ const NavBar = (props) => {
             <Link to="/Todo" className="NavBar-link" component>
                 To-do list
             </Link>
-                </div>  
+                </div> 
             </div>
         </>
     );

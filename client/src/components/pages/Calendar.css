@@ -1,0 +1,34 @@
+.Calendar-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    background-image: url('https://wallpapercave.com/wp/wp12821131.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gAuth {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.gCal {
+    width: 100%;
+}
+
+.info-text {
+    font-size: 20px;
+    color: rgb(17, 83, 107);
+    text-align: center;
+}
